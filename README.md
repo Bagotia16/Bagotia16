@@ -26,7 +26,7 @@
 
 
 <a href="mailto:bagotiadeepanshu@gmail.com">
-  <img src="https://github.com/Bagotia/bagotia16/blob/main/img/mail.png" height="40" />
+  <img src="https://th.bing.com/th/id/R.6b35a93344c4eb087ecb9451007da525?rik=jaVucFWT4h4pOg&riu=http%3a%2f%2fwww.pmldaily.com%2fwp-content%2fuploads%2f2019%2f02%2fnew-gmail-still-1.jpg&ehk=3Wbswk7IaXOE7hasSq2W2ghhNrep2CQFdk7UsytHyyE%3d&risl=&pid=ImgRaw&r=0" height="40" />
 </a>
 
 
