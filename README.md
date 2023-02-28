@@ -2,8 +2,8 @@
 
 ### 🎧 Spotify Playing
 
-![spotify-github-profile](https://github.com/Bagotia16/Bagotia16/blob/main/img/default.svg)
 
+![spotify-github-profile](https://github.com/Bagotia16/Bagotia16/blob/main/img/default.svg)
 ### Tools
 
 
