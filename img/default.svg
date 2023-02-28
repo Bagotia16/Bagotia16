@@ -1,4 +1,4 @@
-<svg width="320" height="445" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="cardTitle" role="img">
+<svg width="320" height="220" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="cardTitle" role="img">
   <title id="cardTitle">Now playing on Spotify</title>
   <foreignObject width="320" height="445">
     <style>
@@ -99,9 +99,9 @@
     </div>
   </foreignObject>
   
-  <a href="{}" target="_BLANK">
+<!--   <a href="{}" target="_BLANK">
       <center>
         <img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/song.png" width="300" height="300" class="cover" />
       </center>
-    </a>
+    </a> -->
 </svg>
