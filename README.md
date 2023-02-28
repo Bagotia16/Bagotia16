@@ -31,10 +31,10 @@
 
 
 <a href="https://www.linkedin.com/in/deepanshu-bagotia/">
-  <img src="https://github.com/blackcater/blackcater/blob/main/images/img/Linkedin.png" height="40" />
+  <img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/Linkedin.png" height="40" />
 </a>
 
 
 <a href="https://www.instagram.com/bagotia.deepanshu">
-  <img src="https://github.com/blackcater/blackcater/blob/main/images/img/Insta.png" height="40" />
+  <img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/Insta.png" height="40" />
 </a>
