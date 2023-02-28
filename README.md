@@ -16,12 +16,12 @@
 
 
 <a href="https://medium.com/@bagotia" alt="blackcater's blog" target="_blank">
-  <img src="https://github.com/Bagotia16/bagotia16/blob/main/img/Medium.jpeg" height="40" />
+  <img src="https://th.bing.com/th/id/OIP.OHhUfzihC_X8vYOsQ3VYfAHaEL?pid=ImgDet&rs=1" height="40" />
 </a>
 
 
 <a href="https://twitter.com/mr_bagotia" alt="blackcater's blog" target="_blank">
-  <img src="https://github.com/Bagotia16/bagotia16/blob/main/img/Twitter.png" height="40" />
+  <img src="https://www.cnet.com/a/img/H3RnMThvT8W1ayiVwa_CZ9MVyzM=/1200x630/2016/04/29/c41d9b6e-59f6-4aa3-90f2-103909f1b554/twitter-logo-corbis.jpg" height="40" />
 </a>
 
 
@@ -31,10 +31,10 @@
 
 
 <a href="https://www.linkedin.com/in/deepanshu-bagotia/">
-  <img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/Linkedin.png" height="40" />
+  <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/06/LI-bug-CONTENT-2019.jpg" height="40" />
 </a>
 
 
 <a href="https://www.instagram.com/bagotia.deepanshu">
-  <img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/Insta.png" height="40" />
+  <img src="https://static.dribbble.com/users/347851/screenshots/13441830/media/85afd38258ac9bfb4dba4b679038421c.png" height="40" />
 </a>
