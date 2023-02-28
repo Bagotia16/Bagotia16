@@ -1,8 +1,8 @@
-<imgsrc="https://github.com/Bagotia16/bagotia16/blob/master/img/intro.gif"alt="Mokkapps GitHub README header image">
+<img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/I%20am%20Deepanshu%20Bagotia.gif" alt="Mokkapps GitHub README header image">
 
 ### 🎧 Spotify Playing
 
-![spotify-github-profile](img/default.svg)
+![spotify-github-profile](https://github.com/Bagotia16/Bagotia16/blob/main/img/default.svg)
 
 ### Tools
 
@@ -16,25 +16,25 @@
 
 
 <a href="https://medium.com/@bagotia" alt="blackcater's blog" target="_blank">
-  <img src="https://github.com/Bagotia16/bagotia16/blob/master/img/Medium.jpeg" height="40" />
+  <img src="https://github.com/Bagotia16/bagotia16/blob/main/img/Medium.jpeg" height="40" />
 </a>
 
 
 <a href="https://twitter.com/mr_bagotia" alt="blackcater's blog" target="_blank">
-  <img src="https://github.com/Bagotia16/bagotia16/blob/master/img/Twitter.png" height="40" />
+  <img src="https://github.com/Bagotia16/bagotia16/blob/main/img/Twitter.png" height="40" />
 </a>
 
 
 <a href="mailto:bagotiadeepanshu@gmail.com">
-  <img src="https://github.com/Bagotia/bagotia16/blob/master/img/mail.png" height="40" />
+  <img src="https://github.com/Bagotia/bagotia16/blob/main/img/mail.png" height="40" />
 </a>
 
 
 <a href="https://www.linkedin.com/in/deepanshu-bagotia/">
-  <img src="https://github.com/blackcater/blackcater/raw/main/images/img/Linkedin.png" height="40" />
+  <img src="https://github.com/blackcater/blackcater/blob/main/images/img/Linkedin.png" height="40" />
 </a>
 
 
 <a href="https://www.instagram.com/bagotia.deepanshu">
-  <img src="https://github.com/blackcater/blackcater/raw/main/images/img/Insta.png" height="40" />
+  <img src="https://github.com/blackcater/blackcater/blob/main/images/img/Insta.png" height="40" />
 </a>
