@@ -1,4 +1,4 @@
-<img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/I%20am%20Deepanshu%20Bagotia.gif" width="400" height="400" alt="Mokkapps GitHub README header image">
+<img src="https://github.com/Bagotia16/Bagotia16/blob/main/img/I%20am%20Deepanshu%20Bagotia.gif" width="300" height="300" alt="Mokkapps GitHub README header image">
 
 ### 🎧 Spotify Playing
 
