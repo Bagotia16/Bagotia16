@@ -31,7 +31,7 @@
 
 
 <a href="https://www.linkedin.com/in/deepanshu-bagotia/">
-  <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/xbu/linkedin-revised-brand-guidelines/home/fg/brand-homepg-guidance-inlogo-dsk-v01.jpg/jcr:content/renditions/brand-homepg-guidance-inlogo-dsk-v01-2x.jpg" height="40" />
+  <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/xbu/linkedin-revised-brand-guidelines/in-logo/fg/brand-inlogo-hero-fg-dsk-v01.png/jcr:content/renditions/brand-inlogo-hero-fg-dsk-v01-2x.png" height="40" />
 </a>
 
 
