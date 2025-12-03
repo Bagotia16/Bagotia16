@@ -293,29 +293,113 @@
 
 
 	var portfolioMasonry = function() {
- $('.filters ul li').click(function(){
-        $('.filters ul li').removeClass('active');
-        $(this).addClass('active');
-        
-        var data = $(this).attr('data-filter');
-        $grid.isotope({
-          filter: data
-        })
-      });
+		// Pagination variables
+		var currentPage = 1;
+		var itemsPerPage = 6;
+		var currentFilter = '*';
+		var $grid;
 
+		// Function to update pagination UI
+		function updatePagination() {
+			var $items = currentFilter === '*' 
+				? $('.grid .single-portfolio')
+				: $('.grid .single-portfolio' + currentFilter);
+			
+			var totalItems = $items.length;
+			var totalPages = Math.ceil(totalItems / itemsPerPage);
+			
+			// Update page info
+			$('#current-page').text(currentPage);
+			$('#total-pages').text(totalPages);
+			
+			// Update button states
+			$('#prev-page').prop('disabled', currentPage === 1);
+			$('#next-page').prop('disabled', currentPage >= totalPages);
+			
+			// Hide/show items based on current page
+			$items.each(function(index) {
+				var $item = $(this);
+				var startIndex = (currentPage - 1) * itemsPerPage;
+				var endIndex = startIndex + itemsPerPage;
+				
+				if (index >= startIndex && index < endIndex) {
+					$item.removeClass('hidden-item');
+				} else {
+					$item.addClass('hidden-item');
+				}
+			});
+			
+			// Re-layout isotope after showing/hiding items
+			if ($grid) {
+				$grid.isotope('layout');
+			}
+		}
 
-      if(document.getElementById("section-portfolio")){
-            var $grid = $(".grid").isotope({
-              itemSelector: ".all",
-              percentPosition: true,
-              masonry: {
-                columnWidth: ".all"
-              }
-            })
-      };
+		// Filter click handler
+		$('.filters ul li').click(function(){
+			$('.filters ul li').removeClass('active');
+			$(this).addClass('active');
+			
+			currentFilter = $(this).attr('data-filter');
+			currentPage = 1; // Reset to page 1 when filter changes
+			
+			$grid.isotope({
+				filter: currentFilter
+			});
+			
+			// Update pagination after filter change
+			setTimeout(updatePagination, 100);
+		});
 
+		// Previous page button
+		$('#prev-page').click(function() {
+			if (currentPage > 1) {
+				currentPage--;
+				updatePagination();
+				// Scroll to blog section
+				$('html, body').animate({
+					scrollTop: $('#section-portfolio').offset().top - 100
+				}, 500);
+			}
+		});
 
+		// Next page button
+		$('#next-page').click(function() {
+			var $items = currentFilter === '*' 
+				? $('.grid .single-portfolio')
+				: $('.grid .single-portfolio' + currentFilter);
+			var totalPages = Math.ceil($items.length / itemsPerPage);
+			
+			if (currentPage < totalPages) {
+				currentPage++;
+				updatePagination();
+				// Scroll to blog section
+				$('html, body').animate({
+					scrollTop: $('#section-portfolio').offset().top - 100
+				}, 500);
+			}
+		});
+
+		// Initialize Isotope with imagesLoaded
+		if(document.getElementById("section-portfolio")){
+			var $gridElement = $(".grid");
+			
+			// Wait for images to load before initializing
+			$gridElement.imagesLoaded(function() {
+				$grid = $gridElement.isotope({
+					itemSelector: ".all",
+					percentPosition: true,
+					masonry: {
+						columnWidth: ".all"
+					}
+				});
+				
+				// Initialize pagination after isotope is ready
+				updatePagination();
+			});
+		}
 	};
+
 
 
 	$(function(){
