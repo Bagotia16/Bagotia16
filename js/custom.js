@@ -26,29 +26,72 @@
 	};
 
 
-	// navigation
+	// Unused after Isotope removal — kept to avoid reference errors in showSection
+	var $grid = null;
+
+	// Section switching (single-page tab behavior)
+	var sectionIds = ['section-home', 'section-portfolio', 'section-resume', 'section-about'];
+
+	var showSection = function(id) {
+		if (sectionIds.indexOf(id) === -1) id = 'section-home';
+
+		// Hide all sections
+		sectionIds.forEach(function(s) {
+			var el = document.getElementById(s);
+			if (el) el.style.display = 'none';
+		});
+
+		// Show the target section
+		var target = document.getElementById(id);
+		if (target) target.style.display = 'block';
+
+		// Navbar: transparent over hero, white on other sections
+		if (id === 'section-home') {
+			$('.site-navbar').removeClass('scrolled');
+		} else {
+			$('.site-navbar').addClass('scrolled');
+		}
+
+		// Update active nav link
+		$('#pb-navbar .navbar-nav li').removeClass('active');
+		$('#pb-navbar .navbar-nav a[href="#' + id + '"]').closest('li').addClass('active');
+
+		// Scroll to top of page
+		window.scrollTo(0, 0);
+
+		// Refresh waypoints so animations trigger correctly
+		if (typeof $.waypoints === 'function') {
+			$.waypoints('refresh');
+		}
+
+		// (Isotope removed — no relayout needed)
+
+		// Update URL hash without triggering scroll
+		history.pushState(null, null, '#' + id);
+	};
+
 	var OnePageNav = function() {
 		var navToggler = $('.navbar-toggler');
-		$(".smoothscroll[href^='#'], #pb-navbar ul li a[href^='#']").on('click', function(e) {
-		 	e.preventDefault();
-		 	var hash = this.hash;
-		 		
-		 	$('html, body').animate({
 
-		    scrollTop: $(hash).offset().top
-		  }, 700, 'easeInOutExpo', function(){
-		    window.location.hash = hash;
-		  });
-		});
-		$("#pb-navbar ul li a[href^='#']").on('click', function(e){
-			if ( navToggler.is(':visible') ) {
-		  	navToggler.click();
-		  }
+		$('#pb-navbar .navbar-nav a[href^="#"]').on('click', function(e) {
+			e.preventDefault();
+			var targetId = $(this).attr('href').substring(1);
+			showSection(targetId);
+			// Close mobile menu if open
+			if (navToggler.is(':visible') && $('.navbar-collapse').hasClass('show')) {
+				navToggler.click();
+			}
 		});
 
-		$('body').on('activate.bs.scrollspy', function () {
-		  console.log('nice');
-		})
+		// Handle browser back/forward
+		$(window).on('popstate', function() {
+			var hash = window.location.hash ? window.location.hash.substring(1) : 'section-home';
+			showSection(hash);
+		});
+
+		// Show correct section on initial load
+		var initialHash = window.location.hash ? window.location.hash.substring(1) : 'section-home';
+		showSection(initialHash);
 	};
 	
 
@@ -293,111 +336,18 @@
 
 
 	var portfolioMasonry = function() {
-		// Pagination variables
-		var currentPage = 1;
-		var itemsPerPage = 6;
-		var currentFilter = '*';
-		var $grid;
-
-		// Function to update pagination UI
-		function updatePagination() {
-			var $items = currentFilter === '*' 
-				? $('.grid .single-portfolio')
-				: $('.grid .single-portfolio' + currentFilter);
-			
-			var totalItems = $items.length;
-			var totalPages = Math.ceil(totalItems / itemsPerPage);
-			
-			// Update page info
-			$('#current-page').text(currentPage);
-			$('#total-pages').text(totalPages);
-			
-			// Update button states
-			$('#prev-page').prop('disabled', currentPage === 1);
-			$('#next-page').prop('disabled', currentPage >= totalPages);
-			
-			// Hide/show items based on current page
-			$items.each(function(index) {
-				var $item = $(this);
-				var startIndex = (currentPage - 1) * itemsPerPage;
-				var endIndex = startIndex + itemsPerPage;
-				
-				if (index >= startIndex && index < endIndex) {
-					$item.removeClass('hidden-item');
+		$('.bp-filters ul li').click(function() {
+			$('.bp-filters ul li').removeClass('active');
+			$(this).addClass('active');
+			var filter = $(this).attr('data-filter');
+			$('.bp-item').each(function() {
+				if (filter === '*' || $(this).hasClass(filter)) {
+					$(this).removeClass('bp-hidden');
 				} else {
-					$item.addClass('hidden-item');
+					$(this).addClass('bp-hidden');
 				}
 			});
-			
-			// Re-layout isotope after showing/hiding items
-			if ($grid) {
-				$grid.isotope('layout');
-			}
-		}
-
-		// Filter click handler
-		$('.filters ul li').click(function(){
-			$('.filters ul li').removeClass('active');
-			$(this).addClass('active');
-			
-			currentFilter = $(this).attr('data-filter');
-			currentPage = 1; // Reset to page 1 when filter changes
-			
-			$grid.isotope({
-				filter: currentFilter
-			});
-			
-			// Update pagination after filter change
-			setTimeout(updatePagination, 100);
 		});
-
-		// Previous page button
-		$('#prev-page').click(function() {
-			if (currentPage > 1) {
-				currentPage--;
-				updatePagination();
-				// Scroll to blog section
-				$('html, body').animate({
-					scrollTop: $('#section-portfolio').offset().top - 100
-				}, 500);
-			}
-		});
-
-		// Next page button
-		$('#next-page').click(function() {
-			var $items = currentFilter === '*' 
-				? $('.grid .single-portfolio')
-				: $('.grid .single-portfolio' + currentFilter);
-			var totalPages = Math.ceil($items.length / itemsPerPage);
-			
-			if (currentPage < totalPages) {
-				currentPage++;
-				updatePagination();
-				// Scroll to blog section
-				$('html, body').animate({
-					scrollTop: $('#section-portfolio').offset().top - 100
-				}, 500);
-			}
-		});
-
-		// Initialize Isotope with imagesLoaded
-		if(document.getElementById("section-portfolio")){
-			var $gridElement = $(".grid");
-			
-			// Wait for images to load before initializing
-			$gridElement.imagesLoaded(function() {
-				$grid = $gridElement.isotope({
-					itemSelector: ".all",
-					percentPosition: true,
-					masonry: {
-						columnWidth: ".all"
-					}
-				});
-				
-				// Initialize pagination after isotope is ready
-				updatePagination();
-			});
-		}
 	};
 
 
@@ -405,11 +355,8 @@
 	$(function(){
 
 		OnePageNav();
-		offCanvasNav();
 		contentWayPoint();
 		navbarState();
-		clickMenu();
-		smoothScroll();
 		portfolioMasonry();
 	});
 

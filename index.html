@@ -7,17 +7,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/flexslider.css">
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 
 </head>
 
-<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+<body>
 
 
 
@@ -33,10 +36,9 @@
 			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-portfolio">Blogs</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-portfolio">Blog</a></li>
 					<li class="nav-item"><a class="nav-link" href="#section-resume">Resume</a></li>
 					<li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -60,272 +62,158 @@
 		</div>
 	</section> <!-- section -->
 
-	<!--##########################-->
-	<section class="site-section" id="section-portfolio">
+	<section class="site-section bp-section" id="section-portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="section-heading text-center col-md-12">
-					<h2> <strong>Blogs</strong></h2>
+					<h2><strong>Blogs</strong></h2>
+					<p class="bp-subtitle">Writing on ML, startups &amp; ideas I find interesting.</p>
 				</div>
 			</div>
-			<div class="filters">
+
+			<div class="bp-filters">
 				<ul>
 					<li class="active" data-filter="*">All</li>
-					<li data-filter=".ML">ML</li>
-					<li data-filter=".brain">Brain</li>
-					<li data-filter=".startup">Startups</li>
-					<!-- <li data-filter=".photography">Photography</li> -->
+					<li data-filter="ML">ML</li>
+					<li data-filter="brain">Brain</li>
+					<li data-filter="startup">Startups</li>
 				</ul>
 			</div>
 
-			<div class="filters-content">
-				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all ML">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<!-- <img class="image img-fluid" src="images/p1.jpg" alt=""> -->
-							</div>
-							<a href="https://medium.com/@bagotia/understanding-nn-intutively-with-autoencoders-75a0ece0bfe4"
-								target="_blank" rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*D9UJcolyYuOUlWB9.png"
-									alt="Understanding NN intutively with AutoEncoders"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+			<div class="bp-grid" id="bp-grid">
+
+				<div class="bp-item ML">
+					<a class="bp-card" href="https://medium.com/@bagotia/understanding-nn-intutively-with-autoencoders-75a0ece0bfe4" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*D9UJcolyYuOUlWB9.png" alt="Understanding NN intuitively with AutoEncoders" loading="lazy">
+							<span class="bp-tag">ML</span>
 						</div>
-						<div class="p-inner">
-							<h4>Understanding NN intutively with AutoEncoders</h4>
-							<div class="cat">ML</div>
+						<div class="bp-body">
+							<h4>Understanding NN intuitively with AutoEncoders</h4>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all ML">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/from-basic-ml-to-graph-ml-af020ac77466" target="_blank"
-								rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*R_-tYoH8Z8MZcaZL"
-									alt="From Basic ML to Graph ML"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+					</a>
+				</div>
+
+				<div class="bp-item ML">
+					<a class="bp-card" href="https://medium.com/@bagotia/from-basic-ml-to-graph-ml-af020ac77466" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*R_-tYoH8Z8MZcaZL" alt="From Basic ML to Graph ML" loading="lazy">
+							<span class="bp-tag">ML</span>
 						</div>
-						<div class="p-inner">
+						<div class="bp-body">
 							<h4>From Basic ML to Graph ML</h4>
-							<div class="cat">ML</div>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all ML">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/how-to-generate-node-embeddings-using-encoder-decoder-in-graphs-7d4d8e667ffe"
-								target="_blank" rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*CS19LFRGCDvUQfd_"
-									alt="How to generate node-embeddings using encoder-decoder in Graphs"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+					</a>
+				</div>
 
+				<div class="bp-item ML">
+					<a class="bp-card" href="https://medium.com/@bagotia/how-to-generate-node-embeddings-using-encoder-decoder-in-graphs-7d4d8e667ffe" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*CS19LFRGCDvUQfd_" alt="How to generate node-embeddings using encoder-decoder in Graphs" loading="lazy">
+							<span class="bp-tag">ML</span>
 						</div>
-						<div class="p-inner">
+						<div class="bp-body">
 							<h4>How to generate node-embeddings using encoder-decoder in Graphs</h4>
-							<div class="cat">ML</div>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all ML">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/designing-features-for-graph-ml-2741c3a5cc2b"
-								target="_blank" rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*mzLHOwHjPL_x5jFb"
-									alt="Designing Features for Graph ML"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+					</a>
+				</div>
+
+				<div class="bp-item ML">
+					<a class="bp-card" href="https://medium.com/@bagotia/designing-features-for-graph-ml-2741c3a5cc2b" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*mzLHOwHjPL_x5jFb" alt="Designing Features for Graph ML" loading="lazy">
+							<span class="bp-tag">ML</span>
 						</div>
-						<div class="p-inner">
+						<div class="bp-body">
 							<h4>Designing Features for Graph ML</h4>
-							<div class="cat">ML</div>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all ML">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/introducing-graphs-to-ml-cc7a27a11feb" target="_blank"
-								rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZqZzzl3bq3HIQ0khj4PfBA.jpeg"
-									alt="Introducing Graphs to ML"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+					</a>
+				</div>
+
+				<div class="bp-item ML">
+					<a class="bp-card" href="https://medium.com/@bagotia/introducing-graphs-to-ml-cc7a27a11feb" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZqZzzl3bq3HIQ0khj4PfBA.jpeg" alt="Introducing Graphs to ML" loading="lazy">
+							<span class="bp-tag">ML</span>
 						</div>
-						<div class="p-inner">
+						<div class="bp-body">
 							<h4>Introducing Graphs to ML</h4>
-							<div class="cat">ML</div>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all startup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/is-your-business-idea-really-good-37a1efb35294"
-								target="_blank" rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*HtubYxeqVNneJs6q"
-									alt="Is your business idea really good?"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
+					</a>
+				</div>
+
+				<div class="bp-item startup">
+					<a class="bp-card" href="https://medium.com/@bagotia/is-your-business-idea-really-good-37a1efb35294" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*HtubYxeqVNneJs6q" alt="Is your business idea really good?" loading="lazy">
+							<span class="bp-tag">Startups</span>
 						</div>
-						<div class="p-inner">
+						<div class="bp-body">
 							<h4>Is your business idea really good?</h4>
-							<div class="cat">Startups</div>
+							<span class="bp-link">Read on Medium &rarr;</span>
 						</div>
-					</div>
-					<div class="single-portfolio col-sm-4 all startup">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-							</div>
-							<a href="https://medium.com/@bagotia/what-is-rich-dad-poor-dad-by-robert-t-kiyosaki-all-about-8400ce2ba0de"
-								target="_blank" rel="noopener">
-								<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*IDtSwahCLRx1VXcV.png"
-									alt="What is Rich Dad Poor Dad by Robert T.Kiyosaki all about"
-									style="max-width:100%;height:100%;border-radius:12px;display:block;">
-							</a>
-						</div>
-						<div class="p-inner">
-							<h4>What is Rich Dad Poor Dad by Robert T.Kiyosaki all about</h4>
-							<div class="cat">Startups</div>
-						</div>
-					</div>
+					</a>
 				</div>
-			</div>
 
-			<!-- Pagination Controls -->
-			<div class="row" id="pagination-controls">
-				<div class="col-12">
-					<div class="pagination-wrapper">
-						<button id="prev-page" class="pagination-btn" disabled>
-							<span class="icon-keyboard_arrow_left"></span> Previous
-						</button>
-						<div class="page-info">
-							<span id="page-indicator">Page <span id="current-page">1</span> of <span
-									id="total-pages">1</span></span>
+				<div class="bp-item startup">
+					<a class="bp-card" href="https://medium.com/@bagotia/what-is-rich-dad-poor-dad-by-robert-t-kiyosaki-all-about-8400ce2ba0de" target="_blank" rel="noopener">
+						<div class="bp-img">
+							<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*IDtSwahCLRx1VXcV.png" alt="What is Rich Dad Poor Dad by Robert T. Kiyosaki all about" loading="lazy">
+							<span class="bp-tag">Startups</span>
 						</div>
-						<button id="next-page" class="pagination-btn">
-							Next <span class="icon-keyboard_arrow_right"></span>
-						</button>
-					</div>
+						<div class="bp-body">
+							<h4>What is Rich Dad Poor Dad by Robert T. Kiyosaki all about</h4>
+							<span class="bp-link">Read on Medium &rarr;</span>
+						</div>
+					</a>
 				</div>
-			</div>
 
+			</div>
 		</div>
 	</section>
 
 	<!-- .section -->
 
 
-	<section class="site-section " id="section-resume">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="section-heading text-center">
-						<h2>My <strong>Profile</strong></h2>
-						<!-- <p>
-							<a href="Research_resume.pdf" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
-						</p> -->
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h2 class="mb-5">Education & Experience</h2>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> 2025 - Present</span>
-						<h3>Research Assistance @ <u><a href="https://iisc.ac.in/" target="_blank">Vision Lab</a></u>
-						</h3>
-						<p>Still trying to understand brain...</p>
-						<span class="school"><u><a href="https://iisc.ac.in/" target="_blank">Indian Institute of
-									Science, Banglore </a></u></span>
-					</div>
+	<section class="rt-section" id="section-resume">
+		<main class="rt-page">
 
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> 2023 - 2025 </span>
-						<h3>Data Science</h3>
-						<p>I worked on the product to detect fraudulent merchants, successfully deployed the product
-							with improved accuracy.
-							I also worked on 2 papers with the team and they got published in KDD'25 and CIKM'25. I also
-							was part of 2 patents published by our team.</p>
-						<span class="school"><u><a
-									href="https://www.mastercard.ca/en-ca/business/overview/ai-garage.html"
-									target="_blank">Mastercard AI Garage</a></u></span>
-					</div>
+			<header class="rt-masthead">
+				<div class="rt-meta-l">&sect; 04 / R&eacute;sum&eacute;</div>
+				<h1>A record of <em>work</em> &amp; ideas</h1>
+				<div class="rt-meta-r">2019 &mdash; 2026</div>
+			</header>
 
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> 2019 - 2023 </span>
-						<h3>Bachlors in Computer Science and Technology </h3>
-						<p>I did my bachlors from IITB. I studied topics like Data Analysis, OS, Networks, Computer
-							Architecture, Compilers, Machine Learning, etc.
-							I did my 1 year long B.Tech Project under Prof Ganesh Ramakrishnan on improving models on
-							OOD using very less data.
-						</p>
-						<span class="school"><u><a href="https://iitb.ac.in/" target="_blank">Indian Institute of
-									Technology Bombay</a></u></span>
-					</div>
-
-				</div>
-				<div class="col-md-6">
-					<h2 class="mb-5">Research Work </h2>
-					<h4 class="mb-5">Papers</h4>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Nov'25 @ ACM CIKM</span>
-						<h3><a href="https://dl.acm.org/doi/abs/10.1145/3746252.3761271" target="_blank"> <u>EvenOddML:
-									Even and Odd Aggregation with Multi-Level Contrastive Learning for Bipartite
-									Graph</u></a></h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p> -->
-						<!-- <span class="school"></span> -->
-					</div>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Aug'25 @ ACM KDD</span>
-						<h3><a href="https://dl.acm.org/doi/10.1145/3711896.3737145" target="_blank"><u>Tag2M- A
-									Task-Agnostic Knowledge Distillation Framework for Distilling Gnn to MLP</u></a>
-						</h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p> -->
-						<!-- <span class="school">ACM KDD 2025</span> -->
-					</div>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Oct'25 @ ECAI PAIS </span>
-						<h3><a href="https://www.researchgate.net/publication/396784981_BiGReachFRauD_Bipartite_Graph_Representation_Learning_Using_Breached_Sources_for_Financial_Fraud_Detection"
-								target="_blank">
-								<u>BiGReachFRauD: Bipartite Graph Representation Learning Using Breached Sources for
-									Financial Fraud Detection</u></a></h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p>
-						<span class="school">ACM KDD 2025</span> -->
-					</div>
-
-					<h4 class="mb-5">Patents</h4>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Filed Jun'23</span>
-						<h3><a target="_blank">METHODS AND SYSTEMS FOR IDENTIFYING NON-COMPLIANT MERCHANTS</a></h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p> -->
-						<!-- <span class="school">Patent Published</span> -->
-					</div>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Filed May'25</span>
-						<h3><a target="_blank">METHOD AND SYSTEMS FOR TRAINING A GRAPH MACHINE LEARNING MODEL FOR FRAUD PREVENTION</a></h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p> -->
-						<!-- <span class="school">Patent Published</span> -->
-					</div>
-					<div class="resume-item mb-4">
-						<span class="date"><span class="icon-calendar"></span> Filed Feb'26</span>
-						<h3><a target="_blank">GRAPH FED LEARNIGN WITH STRUCTURED NODE AUGMENTATION</a></h3>
-						<!-- <p>In this work, we propose a novel GNN architecture that leverages learnable structural and positional node representations to enhance the model's capability to capture complex graph structures and relationships.</p> -->
-						<!-- <span class="school">Patent Published</span> -->
-					</div>
-				</div>
+			<div class="rt-subhead">
+				<div class="l">Education <span class="rt-dot"></span> Experience</div>
+				<div class="r">Papers <span class="rt-dot"></span> Patents</div>
 			</div>
-		</div>
+
+			<section class="rt-timeline" id="rt-timeline">
+				<div class="rt-col-head rt-left">Formation &amp; Practice <span class="rt-count" data-count="left"></span></div>
+				<div class="rt-col-head rt-center">Year</div>
+				<div class="rt-col-head rt-right">Published &amp; Filed <span class="rt-count" data-count="right"></span></div>
+				<div class="rt-rail" id="rt-rail"></div>
+				<!-- Rows injected by JS -->
+			</section>
+
+			<footer class="rt-legend">
+				<div class="rt-group">
+					<div class="rt-item"><span class="rt-swatch rt-edu"></span> Education</div>
+					<div class="rt-item"><span class="rt-swatch rt-exp"></span> Experience</div>
+					<div class="rt-item"><span class="rt-swatch rt-paper"></span> Paper</div>
+					<div class="rt-item"><span class="rt-swatch rt-patent"></span> Patent</div>
+				</div>
+				<div class="rt-hint">Hover a card for details &middot; Click a year to focus</div>
+			</footer>
+		</main>
+
+		<nav class="rt-year-nav" id="rt-year-nav" aria-label="Jump to year"></nav>
 	</section> <!-- .section -->
 
 	<section class="site-section" id="section-about">
@@ -340,51 +228,38 @@
 					</div>
 					<p class="lead">I am just a water drop in a vast universe, sometimes I flow like river, sometimes I
 						am silent like a lake, sometimes I feel vast like an ocean.</p>
-					<p class="mb-5  ">
+					<p class="mb-5">
 						Hi, my name is Deepanshu Bagotia! I have done B.Tech from Computer Science and Engineering. I
-						have 2+ years of experience as a Data Scientist.</br>
-						I am currently working as Research Assistant at Vision Lab, IISc Bangalore.</br>
+						have 2+ years of experience as a Data Scientist.<br>
+						I am currently working as Research Assistant at Vision Lab, IISc Bangalore.<br>
 						I am a curious guy, curious about human brain and its working, curious about new technology and
-						maths (I try to enjoy as much as I understand).</br>
+						maths (I try to enjoy as much as I understand).<br>
 						I love to read/listen books, write blogs and explore new places.
+					</p>
+
+					<hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 30px;">
+
+					<div class="section-heading">
+						<h2>Get <strong>In Touch</strong></h2>
+					</div>
+					<p>Email: [lastname][firstname]@gmail[dot]com</p>
+					<p>
+						<a href="https://x.com/mr_bagotia" class="social-item"><i class="fab fa-x-twitter"></i></a>
+						<a href="https://www.instagram.com/bagotia.deepanshu/" class="social-item"><i class="fab fa-instagram"></i></a>
+						<a href="https://www.linkedin.com/in/deepanshu-bagotia/" class="social-item"><i class="fab fa-linkedin"></i></a>
 					</p>
 				</div>
 			</div>
-
-
-		</div>
-	</section>
-
-	<section class="site-section" id="section-contact">
-		<div class="section-heading text-center">
-			<h2>Get <strong>In Touch</strong></h2>
-			<p>Email: [lastname][firstname]@[gmail.com]</p>
 		</div>
 	</section>
 
 	<footer class="site-footer">
 		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-12 text-center">
-					<p>
-						<!-- <a href="" class="social-item"><span class="icon-facebook2"></span></a> -->
-						<a href="https://x.com/mr_bagotia" class="social-item"><span class="icon-twitter"></span></a>
-						<a href="https://www.instagram.com/bagotia.deepanshu/" class="social-item"><span
-								class="icon-instagram2"></span></a>
-						<a href="https://www.linkedin.com/in/deepanshu-bagotia/" class="social-item"><span
-								class="icon-linkedin2"></span></a>
-						<!-- <a href="#" class="social-item"><span class="icon-vimeo"></span></a> -->
-					</p>
-				</div>
-			</div>
-			<div class="row mb-5">
+			<div class="row">
 				<p class="col-12 text-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Made with <i class="icon-heart text-danger" aria-hidden="true"></i> by Deepanshu Bagotia</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Made with <i class="fas fa-heart text-danger" aria-hidden="true"></i> by Deepanshu Bagotia
 				</p>
 			</div>
-
 		</div>
 	</footer>
 
@@ -401,13 +276,331 @@
 	<script src="js/vendor/jquery.stellar.min.js"></script>
 	<script src="js/vendor/jquery.waypoints.min.js"></script>
 
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 	<script src="js/custom.js"></script>
 
 	<!-- Google Map -->
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     	<script src="js/google-map.js"></script> -->
+
+	<script>
+		(function () {
+			var timeline = document.getElementById('rt-timeline');
+			if (!timeline) return;
+			var yearNav = document.getElementById('rt-year-nav');
+
+			// --- Data: one entry per card, year used for year-marker grouping ---
+			var ROWS = [
+				{
+					year: "2026",
+					right: {
+						kind: "patent",
+						kicker: "Patent · Filed",
+						title: "Graph Fed Learning with Structured Node Augmentation",
+						org: "Co-inventor",
+						meta: ["Filed Feb '26"],
+						detail: "Federated learning on graph-structured data with structured node augmentation to preserve locality while sharing gradients across participants.",
+						chips: ["Federated", "Graph ML"]
+					}
+				},
+				{
+					year: "2025",
+					left: {
+						kind: "exp",
+						kicker: "Experience · Present",
+						title: "Research Assistant",
+						org: "Vision Lab — IISc Bangalore",
+						meta: ["2025 —", "Full-time"],
+						detail: "Still trying to understand the brain — working on vision and neural representations under the Vision Lab group.",
+						chips: ["Vision", "Neuroscience"],
+						orgHref: "https://iisc.ac.in/",
+						from: "Sep '25", to: "Present"
+					},
+					right: {
+						kind: "paper",
+						kicker: "ACM CIKM 2025",
+						title: "EvenOddML: Even and Odd Aggregation with Multi-Level Contrastive Learning for Bipartite Graph",
+						org: "ACM CIKM 2025",
+						meta: ["Nov '25", "CIKM"],
+						detail: "Novel GNN aggregation scheme for bipartite graphs using even/odd-hop signals combined with multi-level contrastive learning.",
+						chips: ["Graph", "Contrastive"],
+						titleHref: "https://dl.acm.org/doi/abs/10.1145/3746252.3761271"
+					}
+				},
+				{
+					year: "2025",
+					right: {
+						kind: "paper",
+						kicker: "ECAI PAIS 2025",
+						title: "BiGReachFRauD: Bipartite Graph Representation Learning Using Breached Sources for Financial Fraud Detection",
+						org: "ECAI PAIS 2025",
+						meta: ["Oct '25", "PAIS"],
+						detail: "Uses breached-data sources in a bipartite graph representation-learning setup to flag financial fraud with stronger recall.",
+						chips: ["Fraud", "Graph"],
+						titleHref: "https://www.researchgate.net/publication/396784981_BiGReachFRauD_Bipartite_Graph_Representation_Learning_Using_Breached_Sources_for_Financial_Fraud_Detection"
+					}
+				},
+				{
+					year: "2025",
+					right: {
+						kind: "paper",
+						kicker: "ACM KDD 2025",
+						title: "Tag2M: A Task-Agnostic Knowledge Distillation Framework for Distilling GNN to MLP",
+						org: "ACM KDD 2025",
+						meta: ["Aug '25", "KDD"],
+						detail: "Task-agnostic distillation of GNN knowledge into MLPs, keeping inference cheap while preserving downstream task quality.",
+						chips: ["Distillation", "GNN"],
+						titleHref: "https://dl.acm.org/doi/10.1145/3711896.3737145"
+					}
+				},
+				{
+					year: "2025",
+					right: {
+						kind: "patent",
+						kicker: "Patent · Filed",
+						title: "Method and Systems for Training a Graph Machine Learning Model for Fraud Prevention",
+						org: "Co-inventor · Mastercard",
+						meta: ["Filed May '25"],
+						detail: "Training methodology for graph-based fraud-prevention models, covering sampling, labeling and evaluation pipelines.",
+						chips: ["Patent", "Fraud"]
+					}
+				},
+				{
+					year: "2023",
+					left: {
+						kind: "exp",
+						kicker: "Experience",
+						title: "Data Scientist",
+						org: "Mastercard AI Garage",
+						meta: ["2023 — 2025", "Full-time"],
+						detail: "Built and deployed a fraudulent-merchant detection product with improved accuracy. Co-authored 2 papers (KDD '25, CIKM '25) and contributed to 2 team patents.",
+						chips: ["Data Science", "Fraud"],
+						orgHref: "https://www.mastercard.ca/en-ca/business/overview/ai-garage.html",
+						from: "Sept '23", to: "Apr '25"
+					},
+					right: {
+						kind: "patent",
+						kicker: "Patent · Filed",
+						title: "Methods and Systems for Identifying Non-Compliant Merchants",
+						org: "Co-inventor · Mastercard",
+						meta: ["Filed Jun '23"],
+						detail: "System for identifying merchants that violate compliance policies using transactional and behavioral signals.",
+						chips: ["Patent", "Compliance"]
+					}
+				},
+				{
+					year: "2019",
+					left: {
+						kind: "edu",
+						kicker: "Education · B.Tech",
+						title: "B.Tech, Computer Science & Engineering",
+						org: "Indian Institute of Technology Bombay",
+						meta: ["2019 — 2023", "Advisor: G. Ramakrishnan"],
+						detail: "Studied OS, Networks, Computer Architecture, Compilers, Data Analysis and Machine Learning. Year-long B.Tech Project on improving OOD model performance with limited data.",
+						chips: ["Machine Learning", "CS"],
+						orgHref: "https://iitb.ac.in/",
+						from: "Aug '19", to: "May '23"
+					}
+				}
+			];
+
+			// --- Render ---
+			var rail = document.getElementById('rt-rail');
+			var leftCount = 0, rightCount = 0, nodeIdx = 0;
+			var seenYears = {};
+
+			ROWS.forEach(function (row) {
+				// Year marker + node — only once per year (first time we see it)
+				if (!seenYears[row.year]) {
+					seenYears[row.year] = true;
+					var ym = document.createElement('div');
+					ym.className = 'rt-year-marker';
+					ym.dataset.year = row.year;
+					ym.textContent = row.year;
+					timeline.appendChild(ym);
+
+					var node = document.createElement('div');
+					node.className = 'rt-node' + (nodeIdx % 2 === 0 ? ' rt-filled' : '');
+					node.dataset.year = row.year;
+					timeline.appendChild(node);
+					nodeIdx++;
+				} else {
+					// ghost for column 2 so grid flows cleanly
+					var ghostC = document.createElement('div');
+					ghostC.style.gridColumn = '2';
+					ghostC.style.minHeight = '1px';
+					timeline.appendChild(ghostC);
+				}
+
+				if (row.left) {
+					leftCount++;
+					timeline.appendChild(makeCard(row.left, 'left', row.year));
+				} else {
+					var gl = document.createElement('div');
+					gl.style.gridColumn = '1';
+					timeline.appendChild(gl);
+				}
+
+				if (row.right) {
+					rightCount++;
+					timeline.appendChild(makeCard(row.right, 'right', row.year));
+				} else {
+					var gr = document.createElement('div');
+					gr.style.gridColumn = '3';
+					timeline.appendChild(gr);
+				}
+			});
+
+			// Counts in column headers
+			var cl = document.querySelector('[data-count="left"]');
+			var cr = document.querySelector('[data-count="right"]');
+			if (cl) cl.textContent = '( ' + leftCount + ' )';
+			if (cr) cr.textContent = '( ' + rightCount + ' )';
+
+			// Year-nav buttons (one per unique year, in order of first appearance)
+			var uniqueYears = [];
+			ROWS.forEach(function (r) {
+				if (uniqueYears.indexOf(r.year) === -1) uniqueYears.push(r.year);
+			});
+			uniqueYears.forEach(function (yr) {
+				var btn = document.createElement('button');
+				btn.textContent = yr;
+				btn.dataset.year = yr;
+				btn.addEventListener('click', function () { focusYear(yr, true); });
+				yearNav.appendChild(btn);
+			});
+
+			function makeCard(item, side, year) {
+				var el = document.createElement('article');
+				el.className = 'rt-card rt-' + side + ' rt-' + item.kind;
+				el.dataset.year = year;
+
+				var titleHtml = item.titleHref
+					? '<a href="' + item.titleHref + '" target="_blank" rel="noopener">' + esc(item.title) + '</a>'
+					: esc(item.title);
+				var orgHtml = item.orgHref
+					? '<a href="' + item.orgHref + '" target="_blank" rel="noopener">' + esc(item.org) + '</a>'
+					: esc(item.org);
+
+				var metaHtml = (item.meta || []).map(function (m, i) {
+					var sep = i > 0 ? '<span style="color:var(--rt-ink-faint)">·</span>' : '';
+					return sep + '<span>' + esc(m) + '</span>';
+				}).join('');
+
+				var chipsHtml = (item.chips || []).map(function (c) {
+					if (typeof c === 'string') return '<span class="rt-chip">' + esc(c) + '</span>';
+					return '<span class="rt-chip ' + (c.cite ? 'rt-cite' : '') + '">' + esc(c.text) + '</span>';
+				}).join('');
+
+				var tenureBarHtml = '';
+				if (side === 'left' && item.from) {
+					tenureBarHtml =
+						'<div class="rt-tenure-bar">' +
+						'<span class="rt-t-label">' + esc(item.to || '') + '</span>' +
+						'<div class="rt-t-line"></div>' +
+						'<span class="rt-t-label">' + esc(item.from) + '</span>' +
+						'</div>';
+				}
+
+				el.innerHTML =
+					tenureBarHtml +
+					'<div class="rt-kicker">' + esc(item.kicker) + '</div>' +
+					'<h3>' + titleHtml + '</h3>' +
+					(item.org ? '<div class="rt-org">' + orgHtml + '</div>' : '') +
+					(metaHtml ? '<div class="rt-meta">' + metaHtml + '</div>' : '') +
+					(item.detail ? '<div class="rt-detail">' + esc(item.detail) + '</div>' : '') +
+					(chipsHtml ? '<div class="rt-chips">' + chipsHtml + '</div>' : '');
+				return el;
+			}
+
+			function esc(s) {
+				return String(s == null ? '' : s)
+					.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+			}
+
+			// --- Interactions ---
+
+			// 1) Reveal on scroll
+			var cards = timeline.querySelectorAll('.rt-card');
+			if ('IntersectionObserver' in window) {
+				var io = new IntersectionObserver(function (entries) {
+					entries.forEach(function (e) {
+						if (e.isIntersecting) {
+							e.target.classList.add('rt-revealed');
+							io.unobserve(e.target);
+						}
+					});
+				}, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+				cards.forEach(function (c) { io.observe(c); });
+			} else {
+				cards.forEach(function (c) { c.classList.add('rt-revealed'); });
+			}
+
+			// 2) Rail progress + year-nav current
+			function updateRail() {
+				var rect = timeline.getBoundingClientRect();
+				var winH = window.innerHeight;
+				var offsetFromTop = Math.max(0, winH * 0.35 - rect.top);
+				var pct = Math.min(100, Math.max(0, (offsetFromTop / rect.height) * 100));
+				document.documentElement.style.setProperty('--rt-rail-progress', pct + '%');
+
+				var markers = timeline.querySelectorAll('.rt-year-marker');
+				var closest = null, closestDist = Infinity;
+				markers.forEach(function (m) {
+					var mRect = m.getBoundingClientRect();
+					var d = Math.abs(mRect.top + mRect.height / 2 - winH * 0.4);
+					if (d < closestDist) { closestDist = d; closest = m; }
+				});
+				yearNav.querySelectorAll('button').forEach(function (b) { b.classList.remove('rt-current'); });
+				if (closest) {
+					var yr = closest.dataset.year;
+					var navBtn = yearNav.querySelector('button[data-year="' + yr + '"]');
+					if (navBtn) navBtn.classList.add('rt-current');
+				}
+			}
+			window.addEventListener('scroll', updateRail, { passive: true });
+			window.addEventListener('resize', updateRail);
+			updateRail();
+
+			// 3) Click year to focus (dim other years)
+			var focusedYear = null;
+			function focusYear(year, scroll) {
+				if (focusedYear === year) { clearFocus(); return; }
+				focusedYear = year;
+				timeline.querySelectorAll('.rt-year-marker').forEach(function (m) {
+					m.classList.toggle('rt-active', m.dataset.year === year);
+				});
+				timeline.querySelectorAll('.rt-card').forEach(function (c) {
+					if (c.dataset.year === year) {
+						c.classList.remove('rt-dimmed');
+						c.classList.add('rt-expanded');
+					} else {
+						c.classList.add('rt-dimmed');
+						c.classList.remove('rt-expanded');
+					}
+				});
+				if (scroll) {
+					var marker = timeline.querySelector('.rt-year-marker[data-year="' + year + '"]');
+					if (marker) {
+						var y = marker.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35;
+						window.scrollTo({ top: y, behavior: 'smooth' });
+					}
+				}
+			}
+			function clearFocus() {
+				focusedYear = null;
+				timeline.querySelectorAll('.rt-year-marker').forEach(function (m) { m.classList.remove('rt-active'); });
+				timeline.querySelectorAll('.rt-card').forEach(function (c) {
+					c.classList.remove('rt-dimmed'); c.classList.remove('rt-expanded');
+				});
+			}
+			timeline.querySelectorAll('.rt-year-marker').forEach(function (m) {
+				m.addEventListener('click', function () { focusYear(m.dataset.year, false); });
+			});
+			document.addEventListener('click', function (e) {
+				if (!e.target.closest('.rt-year-marker, .rt-year-nav button, .rt-card')) clearFocus();
+			});
+		})();
+	</script>
 
 </body>
 
