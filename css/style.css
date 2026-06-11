@@ -1182,13 +1182,15 @@ a:active {
 
 /* Rail */
 .rt-rail {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
   width: 1px;
   background: var(--rt-rule);
-  justify-self: center;
-  grid-column: 2;
-  grid-row: 1 / span 999;
-  min-height: 100%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
 }
 .rt-rail::before {
   content: "";
@@ -1270,7 +1272,7 @@ a:active {
   cursor: default;
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.7s ease, transform 0.7s ease, background 0.25s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease, background 0.25s ease, top 0.35s ease;
 }
 .rt-card.rt-revealed {
   opacity: 1;
@@ -1301,7 +1303,9 @@ a:active {
   transition: background 0.25s ease, width 0.3s ease;
 }
 .rt-card.rt-left::before {
-  display: none;
+  right: 0;
+  width: calc(var(--rt-col-gap) / 2 + 1px);
+  transform: translateX(100%);
 }
 .rt-card.rt-right::before {
   left: 0;
@@ -1309,6 +1313,9 @@ a:active {
   transform: translateX(-100%);
 }
 .rt-card:hover::before { background: var(--rt-accent); }
+.rt-card.rt-left:hover::before {
+  box-shadow: 0 0 10px rgba(186, 201, 100, 0.28);
+}
 
 .rt-card .rt-kicker {
   font-family: var(--rt-mono);
@@ -1381,6 +1388,7 @@ a:active {
   font-weight: 300;
 }
 .rt-card:hover .rt-detail,
+.rt-card.rt-hover-expanded .rt-detail,
 .rt-card.rt-expanded .rt-detail {
   max-height: 260px;
   opacity: 1;
@@ -1399,6 +1407,42 @@ a:active {
 }
 
 /* Tenure line — vertical duration indicator positioned in the gap near the rail */
+.rt-duration-line {
+  position: absolute;
+  width: 3px;
+  min-height: 28px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(to bottom, rgba(236, 233, 224, 0.98), var(--rt-accent));
+  box-shadow: 0 0 12px rgba(186, 201, 100, 0.65), 0 0 26px rgba(186, 201, 100, 0.25);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+.rt-duration-line::before,
+.rt-duration-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rt-accent);
+  border: 1px solid var(--rt-bg);
+  box-shadow: 0 0 10px rgba(186, 201, 100, 0.75);
+  transform: translateX(-50%);
+}
+.rt-duration-line::before { top: -4px; }
+.rt-duration-line::after { bottom: -4px; }
+.rt-duration-line.rt-duration-line-visible {
+  opacity: 1;
+  filter: saturate(1.15);
+}
+.rt-duration-line.rt-dimmed {
+  opacity: 0 !important;
+}
+
 .rt-tenure-line {
   position: absolute;
   display: flex;
@@ -1633,6 +1677,7 @@ a:active {
   .rt-card.rt-left .rt-meta,
   .rt-card.rt-left .rt-chips { justify-content: flex-start; }
   .rt-card::before { display: none; }
+  .rt-duration-line,
   .rt-tenure-line,
   .rt-h-connector,
   .rt-v-connector { display: none; }

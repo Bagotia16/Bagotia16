@@ -252,7 +252,7 @@
 					<p class="mb-5">
 						Hi, my name is Deepanshu Bagotia! I have done B.Tech from Computer Science and Engineering. I
 						have 2+ years of experience as a Data Scientist.<br>
-						I am currently working as Research Assistant at Vision Lab, IISc Bangalore.<br>
+						I am currently working as Research Assistant at Cognition Lab, IISc Bangalore.<br>
 						I am a curious guy, curious about human brain and its working, curious about new technology and
 						maths (I try to enjoy as much as I understand).<br>
 						I love to read/listen books, write blogs and explore new places.
@@ -315,9 +315,21 @@
 			var ROWS = [
 				{
 					year: "2026",
+					left: {
+						kind: "exp",
+						kicker: "Experience · Present",
+						title: "Research Associate",
+						org: "Cognition Lab — IISc Bangalore",
+						meta: ["Jun '26 — Present", "Project Advisor: Prof Sridharan Devarajan"],
+						detail: "Currently I'm working on applying RL over EEG data to understand how we can lower the sampling rate without losing much information.",
+						chips: ["Cognition", "EEG"],
+						orgHref: "https://cns.iisc.ac.in/sridhar",
+						from: "Jun '26", to: "Present"
+					},
+
 					right: {
 						kind: "patent",
-						kicker: "Patent · Filed",
+						kicker: "US Patent",
 						title: "Graph Fed Learning with Structured Node Augmentation",
 						org: "Co-inventor",
 						meta: ["Filed Feb '26"],
@@ -329,14 +341,14 @@
 					year: "2025",
 					left: {
 						kind: "exp",
-						kicker: "Experience · Present",
-						title: "Research Assistant",
+						kicker: "Experience ·  Neuroscience",
+						title: "Research Associate",
 						org: "Vision Lab — IISc Bangalore",
-						meta: ["2025 —", "Full-time"],
+						meta: ["Sep '25 — May '26", "Project Guide: Prof SP Arun"],
 						detail: "I am working on fitting ML algorithms to explain the behaviour data of human brain. We aim for models with good mix of interpretability and accuracy.",
 						chips: ["Vision", "Neuroscience"],
 						orgHref: "https://sites.google.com/site/visionlabiisc",
-						from: "Sep '25", to: "Present"
+						from: "Sep '25", to: "May '26"
 					},
 					right: {
 						kind: "paper",
@@ -379,7 +391,7 @@
 					year: "2025",
 					right: {
 						kind: "patent",
-						kicker: "Patent · Filed",
+						kicker: "US Patent",
 						title: "Method and Systems for Training a Graph Machine Learning Model for Fraud Prevention",
 						org: "Co-inventor · Mastercard",
 						meta: ["Filed May '25"],
@@ -391,7 +403,7 @@
 					year: "2023",
 					left: {
 						kind: "exp",
-						kicker: "Experience",
+						kicker: "Experience ·  ML",
 						title: "Data Scientist",
 						org: "Mastercard AI Garage",
 						meta: ["2023 — 2025", "Full-time"],
@@ -402,7 +414,7 @@
 					},
 					right: {
 						kind: "patent",
-						kicker: "Patent · Filed",
+						kicker: "US Patent",
 						title: "Methods and Systems for Identifying Non-Compliant Merchants",
 						org: "Co-inventor · Mastercard",
 						meta: ["Filed Jun '23"],
@@ -479,6 +491,13 @@
 			if (cl) cl.textContent = '( ' + leftCount + ' )';
 			if (cr) cr.textContent = '( ' + rightCount + ' )';
 
+			var yearsInTimeline = ROWS.map(function (row) { return parseInt(row.year, 10); })
+				.filter(function (year) { return !isNaN(year); });
+			var rangeEl = document.querySelector('#section-resume .rt-meta-r');
+			if (rangeEl && yearsInTimeline.length) {
+				rangeEl.textContent = Math.min.apply(null, yearsInTimeline) + ' — ' + Math.max.apply(null, yearsInTimeline);
+			}
+
 			// Year-nav buttons (one per unique year, in order of first appearance)
 			var uniqueYears = [];
 			ROWS.forEach(function (r) {
@@ -496,6 +515,7 @@
 				var el = document.createElement('article');
 				el.className = 'rt-card rt-' + side + ' rt-' + item.kind;
 				el.dataset.year = year;
+				el.dataset.timelineDate = item.date || ((item.meta || [])[0]) || year;
 
 				var titleHtml = item.titleHref
 					? '<a href="' + item.titleHref + '" target="_blank" rel="noopener">' + esc(item.title) + '</a>'
@@ -538,6 +558,21 @@
 
 			// 1) Reveal on scroll
 			var cards = timeline.querySelectorAll('.rt-card');
+			var _rtLayoutTimers = [];
+			function scheduleTimelineLayout() {
+				_rtLayoutTimers.forEach(function (timer) { clearTimeout(timer); });
+				_rtLayoutTimers = [];
+				if (window.innerWidth <= 820) return;
+				if (window.requestAnimationFrame) {
+					window.requestAnimationFrame(layoutTenureLines);
+				} else {
+					layoutTenureLines();
+				}
+				[90, 240, 520].forEach(function (delay) {
+					_rtLayoutTimers.push(setTimeout(layoutTenureLines, delay));
+				});
+			}
+
 			if ('IntersectionObserver' in window) {
 				var io = new IntersectionObserver(function (entries) {
 					entries.forEach(function (e) {
@@ -551,6 +586,18 @@
 			} else {
 				cards.forEach(function (c) { c.classList.add('rt-revealed'); });
 			}
+
+			cards.forEach(function (c) {
+				if (!c.classList.contains('rt-right')) return;
+				c.addEventListener('mouseenter', function () {
+					c.classList.add('rt-hover-expanded');
+					scheduleTimelineLayout();
+				});
+				c.addEventListener('mouseleave', function () {
+					c.classList.remove('rt-hover-expanded');
+					scheduleTimelineLayout();
+				});
+			});
 
 			// 2) Rail progress + year-nav current
 			function updateRail() {
@@ -595,9 +642,10 @@
 						c.classList.remove('rt-expanded');
 					}
 				});
-				timeline.querySelectorAll('.rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) {
+				timeline.querySelectorAll('.rt-duration-line, .rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) {
 					el.classList.toggle('rt-dimmed', el.dataset.year !== year);
 				});
+				scheduleTimelineLayout();
 				if (scroll) {
 					var marker = timeline.querySelector('.rt-year-marker[data-year="' + year + '"]');
 					if (marker) {
@@ -612,9 +660,10 @@
 				timeline.querySelectorAll('.rt-card').forEach(function (c) {
 					c.classList.remove('rt-dimmed'); c.classList.remove('rt-expanded');
 				});
-				timeline.querySelectorAll('.rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) {
+				timeline.querySelectorAll('.rt-duration-line, .rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) {
 					el.classList.remove('rt-dimmed');
 				});
+				scheduleTimelineLayout();
 			}
 			timeline.querySelectorAll('.rt-year-marker').forEach(function (m) {
 				m.addEventListener('click', function () { focusYear(m.dataset.year, false); });
@@ -627,7 +676,10 @@
 			function parseTenureDate(str) {
 				if (!str) return null;
 				var s = str.trim().toLowerCase();
-				if (s === 'present') return 2026 + 4 / 12;
+				if (s === 'present') {
+					var now = new Date();
+					return now.getFullYear() + now.getMonth() / 12;
+				}
 				var months = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, sept: 8, oct: 9, nov: 10, dec: 11 };
 				var clean = s.replace(/[‘’'`´]/g, "'");
 				var match = clean.match(/([a-z]+)\s*'?(\d{2,4})/);
@@ -659,47 +711,126 @@
 				return yearData[0].y;
 			}
 
+			function clampYToRail(y, yearData) {
+				if (!yearData.length) return y;
+				var ys = yearData.map(function (d) { return d.y; });
+				var minY = Math.min.apply(null, ys);
+				var maxY = Math.max.apply(null, ys);
+				return Math.max(minY, Math.min(maxY, y));
+			}
+
+			function detailContribution(card) {
+				var detail = card.querySelector('.rt-detail');
+				if (!detail) return 0;
+				var rect = detail.getBoundingClientRect();
+				var style = getComputedStyle(detail);
+				return rect.height +
+					parseFloat(style.marginTop || 0) +
+					parseFloat(style.marginBottom || 0);
+			}
+
+			function expandedDetailContribution(card) {
+				var detail = card.querySelector('.rt-detail');
+				if (!detail) return 0;
+				var style = getComputedStyle(detail);
+				return Math.min(detail.scrollHeight, 260) +
+					parseFloat(style.marginTop || 0) +
+					parseFloat(style.marginBottom || 0) +
+					parseFloat(style.borderTopWidth || 0) +
+					parseFloat(style.borderBottomWidth || 0);
+			}
+
+			function projectedCardHeight(card, currentHeight) {
+				if (!card.classList.contains('rt-right')) return currentHeight;
+				var expanded = card.classList.contains('rt-hover-expanded') || card.classList.contains('rt-expanded');
+				if (!expanded) return currentHeight;
+				return currentHeight - detailContribution(card) + expandedDetailContribution(card);
+			}
+
 			var _layoutRunning = false;
 			function layoutTenureLines() {
 				if (_layoutRunning) return;
 				_layoutRunning = true;
 
-				timeline.querySelectorAll('.rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) { el.remove(); });
+				timeline.style.minHeight = '';
+				timeline.querySelectorAll('.rt-duration-line, .rt-tenure-line, .rt-h-connector, .rt-v-connector').forEach(function (el) { el.remove(); });
 
-				var leftCards = Array.prototype.slice.call(timeline.querySelectorAll('.rt-card.rt-left'));
-				leftCards.forEach(function (c) {
+				var allCards = Array.prototype.slice.call(timeline.querySelectorAll('.rt-card'));
+				var yearMarkers = Array.prototype.slice.call(timeline.querySelectorAll('.rt-year-marker'));
+				var yearNodes = Array.prototype.slice.call(timeline.querySelectorAll('.rt-node'));
+
+				allCards.forEach(function (c) {
 					c.style.position = '';
 					c.style.top = '';
 					c.style.left = '';
 					c.style.width = '';
+					c.style.gridColumn = '';
 					c.classList.add('rt-revealed');
 				});
+				yearMarkers.concat(yearNodes).forEach(function (el) {
+					el.style.position = '';
+					el.style.left = '';
+					el.style.top = '';
+					el.style.transform = '';
+					el.style.marginTop = '';
+					el.style.gridColumn = '';
+				});
 
-				var yearMarkers = timeline.querySelectorAll('.rt-year-marker');
 				var railEl = document.getElementById('rt-rail');
 				if (!railEl || yearMarkers.length < 2) { _layoutRunning = false; return; }
 				if (window.innerWidth <= 820) { _layoutRunning = false; return; }
 
 				var timelineRect = timeline.getBoundingClientRect();
 				var railRect = railEl.getBoundingClientRect();
+				if (!timelineRect.width || !timelineRect.height || !railRect.height) { _layoutRunning = false; return; }
 				var colGap = parseFloat(getComputedStyle(timeline).columnGap) || 48;
 				var col1Width = railRect.left - timelineRect.left - colGap;
-
-				var yearData = [];
-				var seenYr = {};
-				yearMarkers.forEach(function (m) {
-					var yr = parseFloat(m.dataset.year);
-					if (seenYr[yr]) return;
-					seenYr[yr] = true;
-					var r = m.getBoundingClientRect();
-					yearData.push({ year: yr, y: r.top + r.height / 2 - timelineRect.top });
+				var railCenterX = railRect.left + railRect.width / 2 - timelineRect.left;
+				var rightColLeft = railRect.right - timelineRect.left + colGap;
+				var rightColWidth = timelineRect.right - railRect.right - colGap;
+				var minCardTop = 0;
+				timeline.querySelectorAll('.rt-col-head').forEach(function (head) {
+					var r = head.getBoundingClientRect();
+					minCardTop = Math.max(minCardTop, r.bottom - timelineRect.top + 8);
 				});
-				yearData.sort(function (a, b) { return a.year - b.year; });
 
-				var baseTenureX = railRect.left + railRect.width / 2 - timelineRect.left - 28;
+				var timelineYears = yearMarkers.map(function (m) { return parseFloat(m.dataset.year); })
+					.filter(function (yr) { return !isNaN(yr); });
+				var minScaleYear = Math.min.apply(null, timelineYears) + 0.5;
+				var maxScaleYear = Math.max.apply(null, timelineYears) + 0.5;
+				var scaleTopY = minCardTop + 32;
+				var scaleBottomY = Math.max(scaleTopY + 360, timelineRect.height - 90);
+				var scaleSpan = maxScaleYear - minScaleYear;
+				function dateToY(val) {
+					if (!scaleSpan) return scaleTopY;
+					var t = (maxScaleYear - val) / scaleSpan;
+					return scaleTopY + Math.max(0, Math.min(1, t)) * (scaleBottomY - scaleTopY);
+				}
 
-				var items = [];
-				leftCards.forEach(function (card, idx) {
+				yearMarkers.forEach(function (marker, i) {
+					var yr = parseFloat(marker.dataset.year);
+					if (isNaN(yr)) return;
+					var y = dateToY(yr + 0.5);
+					marker.style.position = 'absolute';
+					marker.style.gridColumn = '1 / -1';
+					marker.style.left = '50%';
+					marker.style.top = (y - marker.offsetHeight / 2) + 'px';
+					marker.style.transform = 'translateX(-50%)';
+					if (yearNodes[i]) {
+						yearNodes[i].style.position = 'absolute';
+						yearNodes[i].style.gridColumn = '1 / -1';
+						yearNodes[i].style.left = '50%';
+						yearNodes[i].style.top = (y + 42) + 'px';
+						yearNodes[i].style.transform = 'translateX(-50%)';
+						yearNodes[i].style.marginTop = '0';
+					}
+				});
+
+				var leftItems = [];
+				var rightItems = [];
+				var minTimelineHeight = scaleBottomY;
+
+				Array.prototype.slice.call(timeline.querySelectorAll('.rt-card.rt-left')).forEach(function (card, idx) {
 					var fromStr = card.dataset.tenureFrom;
 					var toStr = card.dataset.tenureTo;
 					if (!fromStr) return;
@@ -707,89 +838,95 @@
 					var toVal = parseTenureDate(toStr);
 					if (fromVal === null || toVal === null) return;
 
-					var fromY = interpolateY(fromVal, yearData);
-					var toY = interpolateY(toVal, yearData);
-					var dateTopY = Math.max(0, Math.min(fromY, toY));
+					var fromY = dateToY(fromVal);
+					var toY = dateToY(toVal);
+					var dateTopY = Math.min(fromY, toY);
 					var dateBottomY = Math.max(fromY, toY);
 					var dateMidY = dateTopY + (dateBottomY - dateTopY) / 2;
 
 					var cRect = card.getBoundingClientRect();
-					items.push({
+					leftItems.push({
 						card: card,
 						idx: idx,
-						fromStr: fromStr,
-						toStr: toStr,
 						dateTopY: dateTopY,
 						dateBottomY: dateBottomY,
 						dateMidY: dateMidY,
-						cardHeight: cRect.height,
+						cardHeight: projectedCardHeight(card, cRect.height),
+						marginTop: parseFloat(getComputedStyle(card).marginTop) || 0,
 						year: card.dataset.year
 					});
 				});
 
-				var minGap = 20;
-				items.forEach(function (m, i) {
-					var idealTop = Math.max(0, m.dateMidY - m.cardHeight / 2);
-					if (i > 0) {
-						var prevBottom = items[i - 1].cardTop + items[i - 1].cardHeight;
-						idealTop = Math.max(idealTop, prevBottom + minGap);
-					}
-					m.cardTop = idealTop;
+				Array.prototype.slice.call(timeline.querySelectorAll('.rt-card.rt-right')).forEach(function (card, idx) {
+					var dateVal = parseTenureDate(card.dataset.timelineDate) || (parseFloat(card.dataset.year) + 0.5);
+					var cRect = card.getBoundingClientRect();
+					rightItems.push({
+						card: card,
+						idx: idx,
+						dateMidY: dateToY(dateVal),
+						cardHeight: projectedCardHeight(card, cRect.height),
+						marginTop: parseFloat(getComputedStyle(card).marginTop) || 0,
+						year: card.dataset.year
+					});
 				});
 
-				items.forEach(function (m) {
-					var card = m.card;
-					var tenureLineX = baseTenureX - m.idx * 18;
+				function stackItems(items, left, width) {
+					items.sort(function (a, b) {
+						return a.dateMidY - b.dateMidY || a.idx - b.idx;
+					});
+					var minGap = 20;
+					items.forEach(function (m, i) {
+						var visualTop = Math.max(minCardTop, m.dateMidY - m.cardHeight / 2);
+						if (i > 0) {
+							var prev = items[i - 1];
+							visualTop = Math.max(visualTop, prev.visualTop + prev.cardHeight + minGap);
+						}
+						m.visualTop = visualTop;
+						m.cardTop = visualTop - m.marginTop;
 
-					card.style.position = 'absolute';
-					card.style.left = '0';
-					card.style.width = col1Width + 'px';
-					card.style.top = m.cardTop + 'px';
+						m.card.style.position = 'absolute';
+						m.card.style.gridColumn = '1 / -1';
+						m.card.style.left = left + 'px';
+						m.card.style.width = width + 'px';
+						m.card.style.top = m.cardTop + 'px';
 
-					var tl = document.createElement('div');
-					tl.className = 'rt-tenure-line';
-					tl.dataset.year = m.year;
-					tl.style.left = tenureLineX + 'px';
-					tl.style.top = m.dateTopY + 'px';
-					tl.style.height = (m.dateBottomY - m.dateTopY) + 'px';
-					tl.innerHTML =
-						'<span class="rt-tl-label">' + esc(m.toStr) + '</span>' +
-						'<div class="rt-tl-stem"></div>' +
-						'<span class="rt-tl-label">' + esc(m.fromStr) + '</span>';
-					timeline.appendChild(tl);
+						minTimelineHeight = Math.max(minTimelineHeight, visualTop + m.cardHeight);
+					});
+				}
 
-					var connY = m.cardTop + m.cardHeight / 2;
-					var connLeft = col1Width;
-					var connWidth = Math.max(0, tenureLineX - connLeft);
+				stackItems(leftItems, 0, col1Width);
+				stackItems(rightItems, rightColLeft, rightColWidth);
 
-					var hConn = document.createElement('div');
-					hConn.className = 'rt-h-connector';
-					hConn.dataset.year = m.year;
-					hConn.style.left = connLeft + 'px';
-					hConn.style.top = connY + 'px';
-					hConn.style.width = connWidth + 'px';
-					timeline.appendChild(hConn);
+				leftItems.forEach(function (m) {
+					var durationHeight = Math.max(28, m.dateBottomY - m.dateTopY);
+					var durationTop = Math.max(0, m.dateMidY - durationHeight / 2);
 
-					setTimeout(function () {
-						tl.classList.add('rt-tl-visible');
-						hConn.classList.add('rt-hc-visible');
-					}, 50);
+					var durationLine = document.createElement('div');
+					durationLine.className = 'rt-duration-line';
+					durationLine.dataset.year = m.year;
+					durationLine.style.left = railCenterX + 'px';
+					durationLine.style.top = durationTop + 'px';
+					durationLine.style.height = durationHeight + 'px';
+					timeline.appendChild(durationLine);
 
-					if (!card._tenureHoverBound) {
-						card._tenureHoverBound = true;
-						card.addEventListener('mouseenter', function () {
-							if (card._tl) card._tl.classList.add('rt-tl-highlight');
-							if (card._hConn) card._hConn.classList.add('rt-hc-highlight');
+					if (!m.card._durationHoverBound) {
+						m.card._durationHoverBound = true;
+						m.card.addEventListener('mouseenter', function () {
+							if (m.card._durationLine) m.card._durationLine.classList.add('rt-duration-line-visible');
 						});
-						card.addEventListener('mouseleave', function () {
-							if (card._tl) card._tl.classList.remove('rt-tl-highlight');
-							if (card._hConn) card._hConn.classList.remove('rt-hc-highlight');
+						m.card.addEventListener('mouseleave', function () {
+							if (m.card._durationLine) m.card._durationLine.classList.remove('rt-duration-line-visible');
 						});
 					}
-					card._tl = tl;
-					card._hConn = hConn;
+					m.card._durationLine = durationLine;
+
+					minTimelineHeight = Math.max(
+						minTimelineHeight,
+						durationTop + durationHeight
+					);
 				});
 
+				timeline.style.minHeight = Math.ceil(minTimelineHeight + 40) + 'px';
 				_layoutRunning = false;
 			}
 
