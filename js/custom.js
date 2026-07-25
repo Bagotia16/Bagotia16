@@ -66,12 +66,6 @@
 
 		// (Isotope removed — no relayout needed)
 
-		// Recalculate timeline layout now that it's visible
-		if (id === 'section-resume' && typeof window.rtLayoutTenureLines === 'function') {
-			// Small timeout to allow browser to calculate display: block bounding boxes
-			setTimeout(window.rtLayoutTenureLines, 10);
-		}
-
 		// Update URL hash without triggering scroll
 		history.pushState(null, null, '#' + id);
 	};
@@ -370,4 +364,3 @@
 
 
 })();
-
